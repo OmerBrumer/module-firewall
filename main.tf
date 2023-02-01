@@ -101,7 +101,7 @@ resource "azurerm_firewall" "main" {
 }
 
 module "firewall_policy" {
-  source = "git::https://gitlab.com/OmerBrumer/firewall_policy.git"
+  source = "git::https://github.com/OmerBrumer/module-firewall-policy.git"
   count  = var.firewall_policy_id == null ? 1 : 0
 
   resource_group_name = var.resource_group_name
@@ -116,7 +116,7 @@ module "firewall_policy" {
 }
 
 module "diagnostic_settings" {
-  source = "git::https://gitlab.com/OmerBrumer/diagnostic_setting.git"
+  source = "git::https://github.com/OmerBrumer/module-diagnostic-setting.git"
 
   log_analytics_workspace_id = var.log_analytics_workspace_id
   diagonstic_setting_name    = "${azurerm_firewall.main.name}-diagnostic-setting"
